@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-07-22 16:50:58
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-07-24 14:03:04
+ * @LastEditTime: 2022-07-24 16:22:42
  * @Description: 入口文件
 -->
 <script setup>
@@ -19,10 +19,10 @@
 		});
 		todo.value = "";
 	}
-	function handleDone(item) {
+	function handleDone(item, i) {
 		const theList = item.status ? doneList : todoList;
 		theList.push(item);
-		console.log(item);
+		console.log(theList);
 	}
 </script>
 
