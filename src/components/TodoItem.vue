@@ -1,0 +1,42 @@
+<!--
+ * @Date: 2022-07-23 22:55:46
+ * @LastEditors: Mr.qin
+ * @LastEditTime: 2022-07-24 14:15:09
+ * @Description: todo 项
+-->
+<script setup>
+	const prop = defineProps({
+		todoList: Array,
+	});
+	const emit = defineEmits(["toDone"]);
+	function onChangeState(item, i) {
+		item.status = !item.status;
+
+		prop.todoList.splice(i, 1);
+		emit("toDone", item);
+	}
+</script>
+
+<template>
+	<div
+		class="todo-item m-t-15 p-10 flex-sb brs-8"
+		:style="{ background: item.color }"
+		v-for="(item, i) in todoList"
+		:key="i"
+	>
+		<span class="fz-18 c-stroke trs-5">{{ item.text }}</span>
+		<input
+			@change="onChangeState(item, i)"
+			type="checkbox"
+			class="bd-white c-stroke"
+			:class="item.status ? 'bd-0' : ''"
+			name="status"
+		/>
+	</div>
+</template>
+
+<style scoped>
+	.todo-item {
+		width: 240px;
+	}
+</style>

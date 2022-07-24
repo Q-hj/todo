@@ -1,0 +1,137 @@
+/*
+ * @Date: 2022-07-22 16:50:58
+ * @LastEditors: Mr.qin
+ * @LastEditTime: 2022-07-24 13:42:24
+ * @Description: 编写主题UI
+ */
+button {
+    // border: @border-width solid @theme;
+    padding: 3px 10px;
+    font-family: inherit;
+    background-color: #fff;
+    cursor: pointer;
+    border-color: transparent;
+    font-size: 18rem;
+    border-radius: 5px;
+    transition: .3s;
+
+    &::hover {
+        color: @active;
+        border-color: @active;
+        border-radius: 10px;
+    }
+
+    &::focus,
+    &::focus-visible {
+        /* outline: 4px auto -webkit-focus-ring-color; */
+    }
+}
+
+a {
+    font-weight: 500;
+    color: @theme;
+    text-decoration: inherit;
+
+    &:hover {
+        color: @active;
+    }
+}
+
+
+// 文本输入框
+input[type="text"] {
+    color: @active;
+    outline: 0;
+    font-size: 18rem;
+    line-height: 24rem;
+    padding: 0 10rem;
+    border: @border-width solid @theme;
+    border-width: 0;
+    border-bottom-width: @border-width;
+
+    &:focus {
+        border-color: @active;
+
+    }
+
+    &.brs {
+        border-radius: 18rem;
+        border-width: @border-width;
+    }
+}
+
+
+// 多选框 和 单选
+input[type="checkbox"],
+input[type="radio"] {
+    /*清除复选框默认样式*/
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    border: 1px solid @theme;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+    margin-top: 3px;
+    border-radius: 3px;
+    border-color: @active;
+
+    &:checked {
+        position: relative;
+        padding: 1px;
+        border-color: inherit;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 6px;
+            border: 2px solid @active;
+            border-color: inherit;
+            border-top-width: 0;
+            border-right-width: 0;
+            transform: rotate(-45deg);
+        }
+
+    }
+}
+
+// 单选框
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+// 取色器
+input[type="color"] {
+    // border: 2px solid @theme;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    margin-top: 3px;
+    // border-radius: 50%;
+    // box-shadow: 0 0 15px 5px @theme;
+    background-color: #fff;
+
+    &::-webkit-color-swatch-wrapper {
+        padding: 0;
+    }
+
+    /*  设置内层的边框(放置从拾色器选取的颜色)样式，颜色改变的地方
+    	 * 去掉剩下的黑色边框 */
+    &::-webkit-color-swatch {
+        // background-color: #fff !important;
+        border: 0;
+        // border-radius: 50%;
+    }
+}
+
+
+
+hr {
+    width: 100%;
+    border-color: @theme;
+    margin: 20px 0;
+
+}

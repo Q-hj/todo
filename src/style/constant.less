@@ -1,0 +1,229 @@
+/*
+ * @Date: 2022-07-22 16:50:58
+ * @LastEditors: Mr.qin
+ * @LastEditTime: 2022-07-24 13:42:00
+ * @Description: 常用css
+ */
+@theme: #42b884; //项目主题色
+@active: #747bff; //项目副色
+@border-width: 2px; //默认边框宽度
+
+@colors: {
+    theme: @theme;
+
+    yellow: #ffc312;
+    blue: #00a8ff;
+    green: #00b894;
+    green-d: #22a6b3;
+
+    success: #00B578;
+    warning: #FF6A2A;
+    error: #E63633;
+
+    black: #000;
+    deep: #363a45;
+    gray: #666a75;
+    light: #b3b5b9;
+    stroke: #e8e9ed;
+    white: #ffffff;
+}
+
+@warp-margin: 16rem; //warp容器距离屏幕两侧的距离
+
+each(@colors, {
+
+    // 文字颜色
+    .c-@{key} {
+        color: @value  !important;
+    }
+
+    // 背景颜色
+    .bc-@{key} {
+        background: @value;
+    }
+
+    // 边框颜色
+    .bd-@{key} {
+        border: @border-width solid @value  !important;
+    }
+
+
+});
+
+each(range(10, 80, 2), {
+
+    // 字体大小 
+    .fz-@{value} {
+        font-size: (@value / @rem);
+
+    }
+
+    // 行高
+    .lh-@{value} {
+        line-height: (@value / @rem);
+    }
+
+
+});
+
+each(range(10), {
+
+
+    // 字体大小
+    .trs-@{value} {
+        transition:(@value / 10)s;
+    }
+
+    // 行高
+    .opacity-@{value} {
+        opacity:(@value / 10);
+    }
+
+}) // --------------------------------------------
+
+.step-1(@i) when(@i<=50) {
+    .brs-@{i} {
+        border-radius: (@i / @rem);
+    }
+
+    .brs-@{i}p {
+        border-radius: (@i / @pc);
+    }
+
+    .bd-@{i} {
+        border-width: (@i / @rem) !important;
+    }
+
+    .step-1(@i+1);
+}
+
+.step-1(0);
+
+
+// --------------规定类名缩写和对应的属性名-------------------
+
+// 宽高
+.size() {
+    w: width;
+    h: height;
+}
+
+// 边距
+.margin-type() {
+    m: margin;
+    p: padding;
+}
+
+// 方向
+.direction() {
+    l: left;
+    r: right;
+    t: top;
+    b: bottom;
+}
+
+
+
+//  css单位无法直接拼接在属性值中，需设置变量，来进行运算得出
+@rem: 1rem;
+@pc: 1%;
+@second: s;
+// 单位
+@unit: @rem @pc;
+
+@zero: 0; //  数字无法直接拼接在类名中，需设置变量
+
+/* 
+* 生成代码示例：
+.w-80 {
+	width: 80rem;
+}
+.h50p {
+	width: 50%;
+}
+.m-5{
+	margin:5rem;
+} 
+.m-0-50 {
+	margin:0 50rem;
+}
+.m-50p-0 {
+	margin: 50% 0;
+}
+.p-r-15p {
+	margin-padding: 15%;
+}
+.t--100 {
+	top: -100rem;
+}
+*/
+
+//遍历间隔范围,值为： @value
+each(range(-200, 300, 5), {
+
+    // 遍历宽高
+    each(.size(), .(@size-type, @size-name) {
+
+            .@{size-name}-@{value} {
+                @{size-type}: (@value / @rem);
+            }
+
+            .minFn(boolean(@value>=0));
+
+            // 大于0 执行生成 百分比宽度css
+            .minFn(@condition) when(@condition=true) {
+                .@{size-name}@{value}p {
+                    @{size-type}: (@value / @pc);
+                }
+            }
+        });
+
+    // 遍历边距类型
+    each(.margin-type(), .(@margin-type, @margin-name, @margin-index) {
+
+            .@{margin-name}-@{value} {
+                @{margin-type}: (@value / @rem);
+            }
+
+            .@{margin-name}-@{zero}-@{value} {
+                @{margin-type}: @zero (@value / @rem);
+            }
+
+            .@{margin-name}-@{value}-@{zero} {
+                @{margin-type}: (@value / @rem) @zero;
+            }
+
+            .@{margin-name}-@{value}p-@{zero} {
+                @{margin-type}: (@value / @pc) @zero;
+            }
+
+            .@{margin-name}-@{zero}-@{value}p {
+                @{margin-type}: @zero (@value / @pc);
+            }
+
+            // 遍历方向
+            each(.direction(), .(@direction, @direction-name) {
+                    .@{margin-name}-@{direction-name}-@{value} {
+                        @{margin-type}-@{direction}: (@value / @rem);
+                    }
+
+                    .@{margin-name}-@{direction-name}-@{value}p {
+                        @{margin-type}-@{direction}: (@value / @pc);
+                    }
+
+                    // 需要抽离，只执行一次
+                    .directionFn(@condition) when(@condition=true) {
+                        .@{direction-name}-@{value} {
+                            @{direction}: (@value / @rem);
+                        }
+                    }
+
+                    //  @margin-index >1 时调用
+                    .directionFn(boolean(@margin-index>1));
+                });
+
+
+        });
+
+
+});
