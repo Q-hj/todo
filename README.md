@@ -8,7 +8,9 @@
 
 ## Task
 
-- input[range...]
+- input
+  [range...date]
+
 
 - v3 新特性（组合式api）抽离两种组件 逻辑
 
