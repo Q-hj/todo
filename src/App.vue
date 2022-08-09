@@ -1,10 +1,12 @@
 <!--
  * @Date: 2022-07-22 16:50:58
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-07-24 16:22:42
+ * @LastEditTime: 2022-08-09 14:46:05
  * @Description: 入口文件
 -->
 <script setup>
+	import { get, post } from "@/utils/http";
+	console.log(get);
 	const todo = ref("");
 	const color = ref("#8a75ff");
 	const todoList = reactive([]); //todo
@@ -28,9 +30,10 @@
 
 <template>
 	<div class="todo flex-col-center">
-		<header class="tac m-40">
+		<!-- <header class="tac m-40">
 			<h1>🏳️‍🌈代办事项🏳️‍🌈</h1>
-		</header>
+		</header> -->
+
 		<nav>
 			<input v-model="color" type="color" name="" id="" />
 

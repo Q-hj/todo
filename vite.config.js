@@ -1,22 +1,29 @@
 /*
  * @Date: 2022-07-22 16:50:58
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-07-24 14:36:22
+ * @LastEditTime: 2022-08-09 14:45:24
  * @Description: vite 配置文件
  */
 import { defineConfig, loadEnv } from "vite"; // https://vitejs.dev/config/
-
+// console.log(loadEnv);
+import { resolve } from "path";
 import vue from "@vitejs/plugin-vue";
 
 import Components from "unplugin-vue-components/vite";
 
 import AutoImport from "unplugin-auto-import/vite";
 
-// import AutoImport from "unplugin-auto-import/vite";
 // import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 export default defineConfig({
 	base: "./",
+	resolve: {
+		alias: {
+			"@": resolve(__dirname, "src"), // 路径别名
+		},
+		extensions: [".js", ".json", ".ts"], // 使用路径别名时想要省略的后缀名，可以自己 增减
+	},
+
 	plugins: [
 		vue(),
 		//自动导入API
