@@ -29,7 +29,7 @@
 <template>
 	<div class="todo flex-col-center">
 		<header class="tac m-40">
-			<h1>代办事项</h1>
+			<h1>🏳️‍🌈代办事项🏳️‍🌈</h1>
 		</header>
 		<nav>
 			<input v-model="color" type="color" name="" id="" />
