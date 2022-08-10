@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-07-22 16:50:58
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-08-10 14:37:46
+ * @LastEditTime: 2022-08-10 15:33:52
  * @Description: vite 配置文件
  */
 import { defineConfig, loadEnv } from "vite"; // https://vitejs.dev/config/
@@ -21,6 +21,7 @@ export default defineConfig({
 	base: "./",
 	server: {
 		port: 8123,
+		host:"0.0.0.0",
 		// strictPort: true, // 严格端口 true:如果端口已被使用，则直接退出，而不会再进行后续端口的尝试。
 		/**
 		 * @description 解决chrome设置origin:*也跨域机制,代理/api前缀到服务基地址
