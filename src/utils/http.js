@@ -2,7 +2,7 @@ import axios from "axios";
 
 // create an axios instance
 const request = axios.create({
-	baseURL: import.meta.env.VITE_APP_BASE_API, // 设置请求根路径
+	baseURL: "/api" || import.meta.env.VITE_APP_BASE_API, // 设置请求根路径
 	timeout: 1000 * 5, // 请求超时时间,后端有接口响应慢 则可以设置更长(单位:毫秒)
 });
 
@@ -28,7 +28,7 @@ request.interceptors.request.use(
 		request.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
 		const token = sessionStorage.getItem("token");
-
+		console.log(request);
 		if (token) {
 			// 请求头中添加token
 			request.headers["Authorization"] = token;

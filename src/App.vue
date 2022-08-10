@@ -1,12 +1,20 @@
 <!--
  * @Date: 2022-07-22 16:50:58
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-08-09 14:46:05
+ * @LastEditTime: 2022-08-10 14:23:44
  * @Description: 入口文件
 -->
 <script setup>
-	import { get, post } from "@/utils/http";
+	// import { get, post } from "@/utils/http";
+	// import { get } from "@/utils";
 	console.log(get);
+	const params = {
+		geocodedCode: 130000000000,
+		token: "44809c1435aade4731b9cf03fdb159e3",
+	};
+	get("/fireBrigade/getFireBrigadeList", params).then((res) => {
+		console.log(res);
+	});
 	const todo = ref("");
 	const color = ref("#8a75ff");
 	const todoList = reactive([]); //todo
