@@ -1,7 +1,7 @@
 <!--
  * @Date: 2022-07-23 22:55:46
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-07-24 16:27:34
+ * @LastEditTime: 2022-08-11 11:03:07
  * @Description: todo 项
 -->
 <script setup>
@@ -9,13 +9,13 @@
 		todoList: Array,
 	});
 	const todoList = prop.todoList;
-	console.log(todoList);
-	const emit = defineEmits(["toDone"]);
+	// console.log(todoList);
+	const emit = defineEmits(['toDone']);
 	function onChangeState(item, i) {
 		item.status = !item.status;
 
 		todoList.splice(i, 1);
-		emit("toDone", item, i);
+		emit('toDone', item, i);
 	}
 </script>
 
