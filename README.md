@@ -1,12 +1,16 @@
 <!--
  * @Date: 2022-07-23 22:55:46
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-08-11 09:48:44
+ * @LastEditTime: 2022-08-12 14:20:18
  * @Description: 项目描述
 -->
 # TODO
 
 ## Task
+
+- 动态路由加载
+
+- piana封装
 
 - input
   [range...date]
@@ -17,7 +21,17 @@
 
 - 图标
 
-## improve
+## 组件
+
+- 上传
+
+- 导出
+
+- 弹框
+
+- loading
+
+## 类库
 
 - 加解密
 

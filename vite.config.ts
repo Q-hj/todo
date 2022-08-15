@@ -1,7 +1,7 @@
 /*
  * @Date: 2022-07-22 16:50:58
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-08-11 10:52:20
+ * @LastEditTime: 2022-08-12 14:47:17
  * @Description: vite 配置文件
  */
 
@@ -59,10 +59,10 @@ export default defineConfig({
 				// "vue-router",
 				// "pinia",
 				// src 下 apis 文件夹中 index.ts 文件 所有export自动引入
-				// { target: "apis", include: ["index.ts"] },
+				{ target: 'apis', include: ['index.js'] },
 
 				// src 下 utils 文件夹中 所有直接子ts文件内 所有export自动引入
-				{ target: 'utils', include: ['http.js'] }
+				{ target: 'utils', include: ['http.js', 'index.js'] }
 			),
 			// 	resolvers: [ElementPlusResolver()],
 		}),

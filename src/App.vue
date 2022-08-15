@@ -1,18 +1,20 @@
 <!--
  * @Date: 2022-07-22 16:50:58
  * @LastEditors: Mr.qin
- * @LastEditTime: 2022-08-11 11:39:14
+ * @LastEditTime: 2022-08-12 14:49:19
  * @Description: 入口文件
 -->
 <script lang="ts" setup>
+	// post('/user/userData').catch((e) => console.log(e));
+	// import api from '@/api/index.js';
+
 	const params = {
-		geocodedCode: 130000000000,
-		token: '44809c1435aade4731b9cf03fdb159e3',
+		a: 1,
+		b: 2,
+		c: 3,
 	};
-	post('/user/userData').catch((e) => console.log(e));
-	// get('/user/userData', params).then((result) => {
-	// 	console.log(result);
-	// });
+	// api.test(params, 'a', 'c');
+	console.log(getType(new Date()));
 	const todo = ref('');
 	const color = ref('#8a75ff');
 	const todoList = reactive([]); //todo
